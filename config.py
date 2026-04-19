@@ -1,0 +1,44 @@
+from __future__ import annotations
+
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+ASSETS_DIR = PROJECT_ROOT / "assets"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+PIPELINE_DIR = PROJECT_ROOT / "pipeline"
+SIM_DIR = PROJECT_ROOT / "sim"
+DATA_TOOLS_DIR = PROJECT_ROOT / "data_tools"
+
+IMG_W = 1024
+IMG_H = 1024
+FOV_X_DEG = 15.0
+SAFE_RATIO = 0.80
+RENDER_FPS = 5
+RENDER_SCALE = 50.0
+RENDER_EMISSION = 8.0
+RENDER_FOV_DEG = FOV_X_DEG
+
+PC_CAUTION = 1e-6
+PC_DANGER = 1e-4
+DIST_CAUTION_M = 1000.0
+DIST_DANGER_M = 200.0
+D_SAFE_M = DIST_CAUTION_M
+
+BLENDER_EXE = r"D:\Altair\2021\blender.exe"
+TARGET_MODEL = ASSETS_DIR / "target.obj"
+OREKIT_DATA = ASSETS_DIR / "orekit-data.zip"
+BLENDER_SCRIPT = SIM_DIR / "nomove_render_relative_sequence.py"
+BLENDER_SERVER_HOST = "127.0.0.1"
+BLENDER_SERVER_PORT = 8765
+BLENDER_SERVER_URL = f"http://{BLENDER_SERVER_HOST}:{BLENDER_SERVER_PORT}/render"
+BLENDER_SERVER_TIMEOUT_SEC = 120.0
+
+RENDERS_DIR = OUTPUTS_DIR / "renders"
+DATASET_RTN_DIR = OUTPUTS_DIR / "dataset_rtn"
+DATASET_RISKY_DIR = OUTPUTS_DIR / "dataset_risky"
+DATASET_ACTIVE_DIR = OUTPUTS_DIR / "dataset_active"
+VALIDATION_RUNS_DIR = OUTPUTS_DIR / "validation_runs"
+DEFAULT_SINGLE_SAMPLE = DATASET_RTN_DIR / "val" / "no_maneuver" / "sample_00400.csv"
+
+for _p in [OUTPUTS_DIR, RENDERS_DIR, DATASET_RTN_DIR, DATASET_RISKY_DIR, DATASET_ACTIVE_DIR, VALIDATION_RUNS_DIR]:
+    _p.mkdir(parents=True, exist_ok=True)
